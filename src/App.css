@@ -1,0 +1,90 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+body{
+  padding: 0;
+  margin: 0;
+}
+
+#approot{
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  height: 40px;
+  padding: 0;
+  margin: 0;
+  line-height: 40px;
+  background-color: #F6e7e3;
+  color: #e47068;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.bodyitem{  
+  max-height: 12ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: wrap;  
+}
+
+.poetryitem0{ 
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;  
+}
+
+.poetryitem2{ 
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+pre{
+  font-family: sans-serif;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.theme-light{
+  background-color: #F6d7d3;
+  color: #e47068;
+  border: 1px solid #e47068;
+}
+
+.theme-dark{
+  background-color: #e47068;
+  color: #F6d7d3;
+  border: 1px solid #F6d7d3;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
