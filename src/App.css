@@ -165,7 +165,7 @@ pre{
   }
 }
 
-@media (min-width: 832px) and ( max-width: 1200px) {
+@media (min-width: 832px) {
   .show-buttons{
     display: none;
   }
