@@ -14,8 +14,7 @@ import logo from '../assets/images/logo.png';
 
 const Header2 = styled.header`
   /* background-color: #fff000; */
-  color: ${props => props.theme === 'dark' ? '#F6e7e3':'#e47068'};
-  padding: 10px;
+  color: ${props => props.theme === 'dark' ? '#F6e7e3':'#e47068'};  
   background-color: ${props => props.theme === 'dark' ? '#e47068':'#F6e7e3'};
   border-top: ${props => props.theme === 'dark' ? '2px solid #F6e7e3':'2px solid #e47068'};
   border-bottom: '2px solid #e47068';
@@ -23,6 +22,7 @@ const Header2 = styled.header`
   border-right: '2px solid #e47068';
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  min-height: 60px;
 `;
 
 const User = styled.a`
@@ -44,6 +44,7 @@ export const Header = () => {
   const {state, dispatch} = useContext(Context);   
   const [error, setError] = useState([]);
   const [isLog, setIsLog] = useState();
+  const [showButtons, setShowButtons] = useState(false);
 
   const navigate = useNavigate();
 
@@ -59,6 +60,7 @@ export const Header = () => {
         payload: { status: "dark"}
       })
     }
+    resetNavbar();
   }
 
   const logoutClick = async() => {
@@ -78,6 +80,7 @@ export const Header = () => {
       setIsLog(true); 
     }
     // setIsLogin(false);
+    resetNavbar();
     navigate('/');
   }
 
@@ -113,18 +116,61 @@ export const Header = () => {
       }
     }
     validate();
+
+    //setShowButtons(false);
+    handleShowButtons();
+    console.log('Chamou');
   },[])
+
+  const resetNavbar = () => {
+    
+    setShowButtons(false);
+    handleShowButtons();    
+  }
 
   useEffect(() => {
     console.log("is Log, ", isLog);
     console.log("CCDCDDCDCDCDCDD Header loc stor: ",localStorage.getItem('access-token'));
   },[isLog])
 
+
+  const handleShowButtons = () => {
+    let divi = document.getElementById('divi');
+    let header2 = document.getElementById('header2');
+    let items = document.getElementsByClassName('navbar');
+    setShowButtons(!showButtons);
+    if (showButtons) {
+      if(localStorage.getItem('access-token') === null){
+        header2.style.height = "180px";
+        divi.style.height = "180px";
+      } else{
+        header2.style.height = "240px";
+        divi.style.height = "240px";
+      }
+      // divi.style.display = 'flex';
+      let top = 0;
+      for (const item of items) {        
+        top += 60;
+        item.style.top = `${top}px`;  
+        item.style.display = 'inline-block';      
+        // item.style.height = '50px';        
+      } 
+    } else {
+      header2.style.height = "60px";
+      divi.style.height = "60px";
+      // divi.style.display = 'none';
+      for (const item of items) {        
+        // item.style.height = '0px';
+        // item.style.border = '0px'
+      }
+    }   
+  }
+
   return (
     <>      
-      <Header2 theme={state.theme.status} className={`box flex flex-row justify-around items-center`}>
-          
-          <Link to="/"><Logo src={logo} alt="Logo do site" /></Link>
+      <Header2 theme={state.theme.status} className='header2' id='header2'>
+          <div className='divi' id="divi">
+          <Link className="navbarlogo" to="/" onClick={resetNavbar}><Logo src={logo} alt="Logo do site" /></Link>
           {/* { state.user.name === "" &&
             <>
               <Link to="/login">Login</Link>
@@ -136,18 +182,25 @@ export const Header = () => {
           } */}
           { localStorage.getItem('access-token') === null &&
             <>
-              <Link to="/login">Login</Link>
+              <Link className="navbar" to="/login" onClick={resetNavbar}><Button theme={`${state.theme.status}`} largura="150px"  >Login</Button></Link>
               {/* <Link to="/signup">Cadastre-se</Link> */}
             </>
           }                              
-          <button onClick={handleThemeClick}>Mudar Thema</button>                           
+          <Button className="navbar" theme={`${state.theme.status}`} onClick={handleThemeClick}>Mudar Thema</Button>                           
           { localStorage.getItem('access-token') !== null &&
-            <> 
-              <User theme={state.theme.status} className={`flex flex-row content-center`} ><h3>{state.user.name + ' '+ state.user.email}</h3></User>     
-              <Link to="/adicionar-poesia"><Button theme={`${state.theme.status}`} largura="150px"  >Adicionar Poesia</Button></Link>           
-              <Button onClick={logoutClick}>Logout</Button>                    
+            <>               
+              <Link className="navbar" to="/adicionar-poesia" onClick={resetNavbar}><Button theme={`${state.theme.status}`} largura="150px"  >Adicionar Poesia</Button></Link>           
+              <Button className="navbar" onClick={logoutClick} >Logout</Button>                    
+              <User className="user" theme={state.theme.status}><h3>{state.user.name}</h3></User>     
             </>
-          }
+          }          
+          </div> 
+          {/* <User className="user" theme={state.theme.status}><h3>{state.user.name}</h3></User> */}
+          <div className="show-buttons" onClick={handleShowButtons}>
+            <div className="barra"></div>
+            <div className="barra"></div>
+            <div className="barra"></div>
+          </div>
         </Header2>                     
     </>
   )

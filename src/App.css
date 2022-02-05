@@ -16,10 +16,10 @@ body{
   font-size: 20px;
   display: flex;
   justify-content: center;
-  height: 40px;
+  align-items: center;
+  height: 80px;
   padding: 0;
   margin: 0;
-  line-height: 40px;
   background-color: #F6e7e3;
   color: #e47068;
 }
@@ -88,3 +88,98 @@ pre{
     transform: rotate(360deg);
   }
 }
+
+ /* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { }
+
+ /* Small devices (landscape phones, less than 768px) */
+@media (max-width: 831px) { 
+  .show-buttons {   
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    height: 35px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #fff;
+    padding: 4px 8px;
+    justify-content: space-around;
+    border-radius: 6px;
+  }
+  .barra{
+    height: 3px;
+    width: 20px;
+    background-color: #fff;
+  }
+  .header2{
+    height: 60px;
+    position: relative;
+    display: flex;
+    flex-direction: column;    
+    align-items: flex-start;
+    justify-content: center; 
+    transition: all 1s;       
+  }
+  
+  .user{
+    position: absolute;
+    right: 80px;
+    line-height: 60px;
+    /* top: 0px; */
+    display:inline-block;
+  }
+
+  .divi{
+    height: 60px;
+    width: 100%;
+    position: relative;    
+    top: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;    
+    align-items: flex-start;
+    justify-content: center; 
+    background-color: transparent;
+    transition: all 1s;     
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: wrap;  
+  }
+
+  .navbar{
+    position: absolute;
+    width: 150px;
+    margin-bottom: 10px;
+    margin-left: 10px;    
+    transition: all 1s;
+    display: none;
+  }
+  .navbarlogo{
+    position: absolute;
+    top: 10px;
+    left: 10px;    
+    display: inline-block;
+    /* margin-top: 10px;  */
+    /* margin-left: 10px;  */
+    margin-bottom: 10px;
+  }
+}
+
+@media (min-width: 832px) and ( max-width: 1200px) {
+  .show-buttons{
+    display: none;
+  }
+  .divi{
+    background-color: transparent;
+    width: 100%;
+  }
+  .header2, .divi{
+    height: 60px !important;    
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 10px; 
+    /* transition: all 1s;      */
+  }
+}
+
