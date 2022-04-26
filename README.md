@@ -2,7 +2,7 @@
 
 #### Frontend feito com React
 
-#### Sistema com login SignUp
+#### Sistema com login
 
 #### Utilizando o firebase storage para armazenar as fotos
 
@@ -11,3 +11,5 @@
 
 #### Backend com Ruby on Rails e devise-token-auth
 [link para o github do projeto do backend](https://github.com/alissonrangel/Poesia2-backend-rubyonrails)
+
+![poesia frontend site image](https://github.com/alissonrangel/Poetry-public-project-fronend-ReactJS/blob/main/src/assets/images/poesia.png?raw=true)

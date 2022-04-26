@@ -1,9 +1,7 @@
 import axios from 'axios';
 import * as Photos from '../services/photos';
 
-//dotenv.config();
-//const BASEAPI = process.env.BASE_API;
-const BASEAPI = `${process.env.BASEAPI}`;
+const BASEAPI = `https://agua-de-coco-e-poesia.herokuapp.com`;
 
 export const api = {
 
